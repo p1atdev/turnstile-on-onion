@@ -1,12 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>My First Web Page</title>
+    <title>Turnstile on Onion</title>
+    <!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script> -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
 </head>
 
 <body>
-    <h1>Hello, World!</h1>
+
+    <main>
+        <h1>Hello, World!</h1>
+
+        <div id="turnstile" />
+    </main>
+
+    <script>
+        turnstile.ready(function () {
+            console.debug("Turnstile ready");
+            turnstile.render("#turnstile", {
+                // replace with your sitekey.
+                // 1x00000000000000000000AA is a test key and it will always succeed.
+                // see https://developers.cloudflare.com/turnstile/troubleshooting/testing/#dummy-sitekeys-and-secret-keys
+                sitekey: "1x00000000000000000000AA",
+                callback: function (token) {
+                    console.log(`Challenge Success ${token}`);
+                },
+            });
+        });
+    </script>
 </body>
 
 </html>
