@@ -1,0 +1,2 @@
+HiddenServiceDir /app/tor/hidden_service/
+HiddenServicePort 80 web:80

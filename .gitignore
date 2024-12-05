@@ -1,0 +1,7 @@
+
+/tor/hidden_service/hostname
+/tor/hidden_service/hs*key
+
+/keys/*.onion
+
+.DS_Store
