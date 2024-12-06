@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # https://github.com/cathugger/mkp224o
-docker run --rm -it -v $PWD/keys:/keys ghcr.io/cathugger/mkp224o:master -d /keys neko -n 1 
+docker run \
+  --platform linux/amd64 \
+  --rm \
+  -it \
+  -v $PWD/keys:/keys ghcr.io/cathugger/mkp224o:master \
+  -d /keys \
+  -n 1 \
+  neko
 
 # Find the first directory that matches the pattern
 first_dir=$(find ./keys -type d -name "*.onion" | head -n 1)
@@ -15,5 +22,4 @@ else
   echo "No directory found matching the pattern."
 fi
 
-chmod 775 -R ./tor/hidden_service
-
+chmod -R 775 ./tor/hidden_service
